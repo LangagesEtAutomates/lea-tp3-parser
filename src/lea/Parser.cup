@@ -1,0 +1,39 @@
+package lea;
+
+import java.util.*;
+import java_cup.runtime.Symbol;
+
+parser code {:
+
+	private Reporter reporter;
+
+	@SuppressWarnings("deprecation")
+	public Parser(Lexer lexer, Reporter reporter) {
+		super(lexer);
+		this.reporter = reporter;
+	}
+  
+	public int parseInt() {
+		try {
+			if(parse().value instanceof Integer n)
+				return n;
+		} catch (Exception e) {
+			reporter.error(Reporter.Phase.PARSER, Reporter.Span.EMPTY, "Exception: " + e.getClass().getSimpleName());
+		}
+		return 0;
+	}
+
+:}
+
+
+terminal				PLUS, MOINS, MULTIPLIE, PAR_G, PAR_D;
+terminal		Integer ENTIER;
+
+non terminal	Integer	expression;
+
+expression ::= 
+		ENTIER:n									{: RESULT = n; :}
+	|	expression:left expression:right PLUS		{: RESULT = left + right; :}
+	|	expression:left expression:right MOINS		{: RESULT = left - right; :}
+	|	expression:left expression:right MULTIPLIE	{: RESULT = left * right; :}
+;
