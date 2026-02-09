@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Author: Matthieu Perrin
+ * Session: Introduction to CUP
+ */
+
 package lea;
 
 import java.util.*;
@@ -26,14 +32,26 @@ parser code {:
 :}
 
 
-terminal				PLUS, MOINS, MULTIPLIE, PAR_G, PAR_D;
+terminal				PLUS, MOINS, MULTIPLIE, PAR_G, PAR_D, CRO_G, CRO_D;
 terminal		Integer ENTIER;
 
-non terminal	Integer	expression;
+non terminal	Integer	input, expression, dyck;
 
-expression ::= 
-		ENTIER:n									{: RESULT = n; :}
-	|	expression:left expression:right PLUS		{: RESULT = left + right; :}
-	|	expression:left expression:right MOINS		{: RESULT = left - right; :}
-	|	expression:left expression:right MULTIPLIE	{: RESULT = left * right; :}
+
+input ::= 
+		expression:e						{: RESULT = e; :}
+	|	dyck:d								{: RESULT = d; :}
+;
+
+
+expr ::= /* à modifier dans l'exercice 3 */
+		ENTIER:n							{: RESULT = n; :}
+	|	expr:left expr:right PLUS			{: RESULT = left + right; :}
+	|	expr:left expr:right MOINS			{: RESULT = left - right; :}
+	|	expr:left expr:right MULTIPLIE		{: RESULT = left * right; :}
+;
+
+
+dyck ::=  /* à remplir dans l'exercice 2 */
+		/* epsilon */						{: RESULT = 0; :}
 ;

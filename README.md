@@ -68,6 +68,12 @@ This command:
 - generates `Parser.java` and `Terminal.java`,
 - compiles all Java sources into `build/`.
 
+- Run the automated test suite:
+
+```bash
+ant test
+```
+
 - Run the example program:
 
 ```bash
@@ -102,9 +108,9 @@ No external installation is required beyond a JDK and Ant.
 
 All **source code** in this repository is distributed under the **MIT License**.
 
-- The full legal text is available in [`LICENSE.txt`](LICENSE.txt).
+- The full legal text is available in [LICENSE.txt](LICENSE.txt).
 - Organization-wide licensing details and attributions are documented in  
-  https://github.com/LangagesEtAutomates/.github/blob/main/LICENSE.md
+  [https://github.com/LangagesEtAutomates/.github/blob/main/LICENSE.md](https://github.com/LangagesEtAutomates/.github/blob/main/LICENSE.md).
 
 This license applies to all Java sources, grammar files (`.flex`, `.cup`),
 and supporting code in this repository.

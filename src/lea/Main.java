@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Author: Matthieu Perrin
+ * Session: Introduction to CUP
+ */
+
 package lea;
 
 import java.io.*;

@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Author: Matthieu Perrin
+ * Session: Introduction to CUP
+ */
+
 package lea;
 
 import java_cup.runtime.Symbol;
@@ -34,6 +40,8 @@ import java_cup.runtime.Symbol;
 "*"							{ return new Symbol(Terminal.MULTIPLIE); }
 "("							{ return new Symbol(Terminal.PAR_G); }
 ")"							{ return new Symbol(Terminal.PAR_D); }
+"["							{ return new Symbol(Terminal.CRO_G); }
+"]"							{ return new Symbol(Terminal.CRO_D); }
 
  /* Integers */
 0|[1-9][0-9]*		 		{ return new Symbol(Terminal.ENTIER, Integer.parseInt(yytext())); }
