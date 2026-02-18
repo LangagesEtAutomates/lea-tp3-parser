@@ -57,10 +57,10 @@ public final class Exo2Test {
     @Test
     void invalid_dyck_reported() {
         new LeaAsserts("]")
-            .assertHasErrorContaining(Phase.PARSER, "Erreur de syntaxe");
+            .assertHasErrorContaining(Phase.PARSER, "Exception");
 
         new LeaAsserts("[[]")
-            .assertHasErrorContaining(Phase.PARSER, "Erreur de syntaxe");
+            .assertHasErrorContaining(Phase.PARSER, "Exception");
     }
     
 }

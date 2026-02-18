@@ -39,16 +39,16 @@ non terminal	Integer	input, expression, dyck;
 
 
 input ::= 
-		expression:e						{: RESULT = e; :}
-	|	dyck:d								{: RESULT = d; :}
+		expression:e								{: RESULT = e; :}
+	|	dyck:d										{: RESULT = d; :}
 ;
 
 
-expr ::= /* à modifier dans l'exercice 3 */
-		ENTIER:n							{: RESULT = n; :}
-	|	expr:left expr:right PLUS			{: RESULT = left + right; :}
-	|	expr:left expr:right MOINS			{: RESULT = left - right; :}
-	|	expr:left expr:right MULTIPLIE		{: RESULT = left * right; :}
+expression ::= /* à modifier dans l'exercice 3 */
+		ENTIER:n									{: RESULT = n; :}
+	|	expression:left expression:right PLUS		{: RESULT = left + right; :}
+	|	expression:left expression:right MOINS		{: RESULT = left - right; :}
+	|	expression:left expression:right MULTIPLIE	{: RESULT = left * right; :}
 ;
 
 
