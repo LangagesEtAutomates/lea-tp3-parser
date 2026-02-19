@@ -50,8 +50,9 @@ expression ::= /* à modifier dans l'exercice 3 */
 	|	expression:left expression:right MOINS		{: RESULT = left - right; :}
 	|	expression:left expression:right MULTIPLIE	{: RESULT = left * right; :}
 ;
+    z 
 
-
-dyck ::=  /* à remplir dans l'exercice 2 */
-		/* epsilon */						{: RESULT = 0; :}
+dyck ::= 
+		dyck:left CRO_G dyck:right CRO_D  {: left+=1;right+=1;RESULT = left+right ; :}
+		| /* epsilon */						{: RESULT = 0; :}
 ;
