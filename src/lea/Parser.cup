@@ -34,16 +34,15 @@ parser code {:
 
 terminal				PLUS, MOINS, MULTIPLIE, PAR_G, PAR_D, CRO_G, CRO_D,TRUE,FALSE,OR,AND,EQUAL,NO;
 terminal		Integer ENTIER;
-terminal 		String CHAINE;
 
 
-non terminal	Integer	input, dyck, expr,somme,produit,terme,exprb, or,and,inverse,bool;
+non terminal	Integer	input, dyck, expr,somme,produit,terme,exprb, or,and,inverse,bool,egal;
 
 
 input ::= 
-	 	exprb:b 							{: RESULT = b; :}
-	|	expr:e								{: RESULT = e; :}
-	|	dyck:d								{: RESULT = d; :}
+	 	
+	exprb:b 							{: RESULT = b; :}
+	| dyck:d							{: RESULT = d; :}
 	
 	
 ;
@@ -71,26 +70,30 @@ exprb ::=
       or:o {: RESULT = o; :}
 ;
 or ::=
-	or:l OR and:r  {: RESULT = Math.max(l,r); :}
+	and:l OR and:r  {: RESULT = (l+r == 0) ? 0 : 1; :}
 	| and:a 	{: RESULT = a; :}
 ;
 
 and ::=
-	and:l AND inverse:r {: RESULT = l*r; :}
+	inverse:l AND inverse:r {: RESULT = (l*r == 0) ? 0: 1; :}
 	| inverse:i	{: RESULT = i; :}
 ;
 
 inverse ::=
-	NO inverse:i {: RESULT = -(i-1); :}
-	| bool:b     {: RESULT = b; :}
+	NO inverse:i {: RESULT = (i == 0)? 1 : 0; :}
+	| egal:e     {: RESULT = e; :}
+;
+egal ::=
+	egal:l EQUAL bool:r {:int n = 0; if(l == r){n = 1;}RESULT = n;:}
+	| bool:b {: RESULT = b; :}
 ;
 
 bool ::=
 	FALSE	{: RESULT = 0; :}
 	|TRUE	{: RESULT = 1; :}
-	|PAR_G exprb:e PAR_D {: RESULT = e; :}
+	|PAR_G exprb:e PAR_G {: RESULT = e; :}
+	| expr:e {:RESULT = e;:}
 ;
-
 
 
 
