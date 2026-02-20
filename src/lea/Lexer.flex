@@ -42,6 +42,12 @@ import java_cup.runtime.Symbol;
 ")"							{ return new Symbol(Terminal.PAR_D); }
 "["							{ return new Symbol(Terminal.CRO_G); }
 "]"							{ return new Symbol(Terminal.CRO_D); }
+"vrai"          { return new Symbol(Terminal.TRUE); }
+"faux"          { return new Symbol(Terminal.FALSE); }
+"ou"            { return new Symbol(Terminal.OR); }
+"et"            { return new Symbol(Terminal.AND); }
+"non"           { return new Symbol(Terminal.NO); }
+"="             { return new Symbol(Terminal.EQUAL); }
 
  /* Integers */
 0|[1-9][0-9]*		 		{ return new Symbol(Terminal.ENTIER, Integer.parseInt(yytext())); }
