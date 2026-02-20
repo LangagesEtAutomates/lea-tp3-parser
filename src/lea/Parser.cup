@@ -40,7 +40,6 @@ non terminal	Integer	input, dyck, expr,somme,produit,terme,exprb, or,and,inverse
 
 
 input ::= 
-	 	
 	exprb:b 							{: RESULT = b; :}
 	| dyck:d							{: RESULT = d; :}
 	
